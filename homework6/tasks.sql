@@ -38,7 +38,38 @@ FROM users, (
 	)) as stuff
 WHERE (stuff.user_id = id OR stuff.friend_id = id) AND id <> 8;
 
+--  Исходный запрос
+-- Выбираем медиафайлы друзей
+SELECT filename FROM media WHERE user_id IN (
+  (SELECT friend_id 
+  FROM friendship 
+  WHERE user_id = 8 AND status_id IN (
+      SELECT id FROM friendship_statuses WHERE name = 'Confirmed'
+    )
+  )
+  UNION
+  (SELECT user_id 
+    FROM friendship 
+    WHERE friend_id = 8 AND status_id IN (
+      SELECT id FROM friendship_statuses WHERE name = 'Confirmed'
+    )
+  )
+);
 
+-- Улучшенный запрос (без UNION)
+SELECT DISTINCT filename
+FROM media m, (
+	SELECT user_id, friend_id
+	FROM friendship
+	WHERE (user_id = 8 OR friend_id = 8) AND status_id IN (
+		SELECT id FROM friendship_statuses WHERE name = 'Confirmed'
+	)
+) as c
+WHERE (m.user_id IN (c.user_id) OR 
+	   m.user_id in (c.friend_id)) AND
+	   m.user_id <> 8;
+		
+		
 -- Задание 2
 SELECT SUM(likes_count)
 FROM (
