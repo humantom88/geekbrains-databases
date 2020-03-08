@@ -36,7 +36,7 @@ FROM users, (
 	WHERE (user_id = 8 OR friend_id = 8) AND status_id IN (
 		SELECT id FROM friendship_statuses WHERE name = 'Confirmed'
 	)) as stuff
-WHERE stuff.user_id = id OR stuff.friend_id = id
+WHERE (stuff.user_id = id OR stuff.friend_id = id) AND id <> 8;
 
 
 -- Задание 2
