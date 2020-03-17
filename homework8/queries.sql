@@ -76,13 +76,15 @@ FROM (
 	LIMIT 10
 ) as stuff;
 
--- Улучшенный запрос
+-- Улучшенный запрос (добавлена проверка target_types = 'users')
 SELECT SUM(likes_count)
 FROM (
 	SELECT u.id, p.birthday, count(l.id) AS likes_count
 	FROM users u
 	LEFT JOIN profiles p ON u.id = p.user_id
 	LEFT JOIN likes l ON u.id = l.target_id
+	LEFT JOIN target_types tt ON tt.id = l.target_type_id
+	WHERE tt.name = 'users'
 	GROUP BY u.id
 	ORDER BY p.birthday DESC
 	LIMIT 10
@@ -105,7 +107,7 @@ LIMIT 1;
 -- Улучшенный запрос
 SELECT p.gender, count(l.id) AS likes_count
 FROM profiles p
-LEFT JOIN likes l ON p.user_id = l.target_id
+LEFT JOIN likes l ON p.user_id = l.user_id
 GROUP BY p.gender
 ORDER BY likes_count DESC
 LIMIT 1;
