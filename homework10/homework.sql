@@ -30,7 +30,7 @@ SELECT group_name,
     (SELECT p.user_id FROM profiles p WHERE p.birthday = youngest_age LIMIT 1) AS youngest_user,
     (SELECT p.user_id FROM profiles p WHERE p.birthday = oldest_age LIMIT 1) AS oldest_user,
     users_count_in_group,
-	total_users,
+	  total_users,
     users_count_in_group / total_users * 100 AS '%%'
 	FROM (
 		SELECT DISTINCT c.id, c.name AS group_name,
