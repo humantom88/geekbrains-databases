@@ -127,8 +127,8 @@ DROP TABLE IF EXISTS users_steps;
 CREATE TABLE users_steps (
 	user_id BIGINT UNSIGNED NOT NULL,
 	step_id BIGINT UNSIGNED NOT NULL,
-  	is_completed BOOL DEFAULT false,
-  	created_at datetime DEFAULT CURRENT_TIMESTAMP,
+	is_completed BOOL DEFAULT false,
+	created_at datetime DEFAULT CURRENT_TIMESTAMP,
 	completed_at datetime DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT `users_steps_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
 	CONSTRAINT `users_steps_step_id` FOREIGN KEY (`step_id`) REFERENCES `steps` (`id`) ON DELETE CASCADE,

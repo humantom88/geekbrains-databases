@@ -37,3 +37,4 @@ LEFT JOIN (
 ) AS courses_with_steps ON c.id = courses_with_steps.id
 GROUP BY f.id
 ORDER BY res DESC;
+
