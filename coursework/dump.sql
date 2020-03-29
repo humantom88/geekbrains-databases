@@ -1237,7 +1237,62 @@ INSERT INTO `steps` (`id`, `name`, `order_value`, `description`, `note`, `video_
 INSERT INTO `steps` (`id`, `name`, `order_value`, `description`, `note`, `video_id`, `step_type_id`) VALUES ('99', 'nobis', 9382467, 'Doloremque porro alias ipsa quas. Molestias nostrum neque omnis ut eius. Porro molestiae voluptatem ut accusantium et aut sit. Rerum soluta suscipit vel earum voluptas eos.', 'Fugit dolorem quasi consectetur et delectus molestias perferendis. Fugiat doloribus soluta odit at inventore illo. Quae laudantium nobis est.', '99', '99');
 INSERT INTO `steps` (`id`, `name`, `order_value`, `description`, `note`, `video_id`, `step_type_id`) VALUES ('100', 'odio', 17779845, 'Molestias iusto ipsam vel et inventore accusamus voluptatem. Ut omnis assumenda illo nisi eos dignissimos. Perspiciatis qui expedita odit eum in accusamus.', 'Tempore voluptatum est molestiae vel corporis eligendi possimus. Excepturi ipsum eligendi quia. Et adipisci eos rerum porro corporis.', '100', '100');
 
+#
+# TABLE STRUCTURE FOR: courses_steps
+#
 
+DROP TABLE IF EXISTS `courses_steps`;
+
+CREATE TABLE `courses_steps` (
+  `course_id` bigint(20) unsigned NOT NULL,
+  `step_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`course_id`,`step_id`),
+  KEY `courses_steps_step_id` (`step_id`),
+  CONSTRAINT `courses_steps_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `courses_steps_step_id` FOREIGN KEY (`step_id`) REFERENCES `steps` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
+INSERT INTO `courses_steps` (`course_id`, `step_id`) VALUES (RAND() * 100 + 1, RAND() * 100 + 1);
 
 
 #
