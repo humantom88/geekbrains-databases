@@ -1,4 +1,4 @@
--- Факультеты
+
 DROP TABLE IF EXISTS faculties;
 CREATE TABLE `faculties` (
 	id SERIAL,
@@ -6,7 +6,6 @@ CREATE TABLE `faculties` (
 	PRIMARY KEY (id)
 );
 
--- Курсы
 DROP TABLE IF EXISTS courses;
 CREATE TABLE `courses` (
 	id SERIAL,
@@ -16,7 +15,6 @@ CREATE TABLE `courses` (
 	PRIMARY KEY (id)
 );
 
--- Курсы по факультетам
 DROP TABLE IF EXISTS faculties_courses;
 CREATE TABLE `faculties_courses` (
 	faculty_id BIGINT UNSIGNED NOT NULL,
@@ -26,7 +24,6 @@ CREATE TABLE `faculties_courses` (
 	PRIMARY KEY (faculty_id, course_id)
 );
 
--- Пользователи
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL,
@@ -41,7 +38,6 @@ CREATE TABLE users (
   UNIQUE KEY `phone` (`phone`)
 );
 
--- Типы медиа контента
 DROP TABLE IF EXISTS `media_types`;
 CREATE TABLE `media_types` (
   id SERIAL,
@@ -51,7 +47,6 @@ CREATE TABLE `media_types` (
   UNIQUE KEY `name` (`name`)
 );
 
--- Медиа контент
 DROP TABLE IF EXISTS `media`;
 CREATE TABLE `media` (
   id SERIAL,
@@ -67,7 +62,6 @@ CREATE TABLE `media` (
   CONSTRAINT `media_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 );
 
--- Типы шагов курса
 DROP TABLE IF EXISTS step_types;
 CREATE TABLE step_types (
 	id SERIAL,
@@ -75,10 +69,10 @@ CREATE TABLE step_types (
 	PRIMARY KEY (id)
 );
 
--- Шаги курса
 DROP TABLE IF EXISTS steps;
 CREATE TABLE steps (
 	id SERIAL,
+	course_id BIGINT UNSIGNED DEFAULT NULL,
 	name VARCHAR(255) NOT NULL,
 	video_id BIGINT UNSIGNED DEFAULT NULL,
 	step_type_id BIGINT UNSIGNED NOT NULL,
@@ -87,16 +81,6 @@ CREATE TABLE steps (
 	PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS courses_steps;
-CREATE TABLE courses_steps (
-	step_id BIGINT UNSIGNED NOT NULL,
-	course_id BIGINT UNSIGNED NOT NULL,
-	CONSTRAINT `faculties_courses_step_id` FOREIGN KEY (`step_id`) REFERENCES `steps` (`id`) ON DELETE CASCADE,
-	CONSTRAINT `faculties_courses_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE,
-	PRIMARY KEY (step_id, course_id)
-)
-
--- Роли пользователей (админ, преподаватель БД, пользователь и т.д.)
 DROP TABLE IF EXISTS roles;
 CREATE TABLE roles (
 	id SERIAL,
@@ -104,7 +88,6 @@ CREATE TABLE roles (
 	PRIMARY KEY (id)
 );
 
--- Пользователи с ролями
 DROP TABLE IF EXISTS users_roles;
 CREATE TABLE users_roles (
 	user_id BIGINT UNSIGNED NOT NULL,
@@ -114,7 +97,6 @@ CREATE TABLE users_roles (
 	PRIMARY KEY (user_id, role_id)
 );
 
--- Права на доступ к определенному контенту
 DROP TABLE IF EXISTS permissions;
 CREATE TABLE permissions (
 	id SERIAL,
@@ -122,7 +104,6 @@ CREATE TABLE permissions (
 	PRIMARY KEY (id)
 );
 
--- Роли и их права на доступ
 DROP TABLE IF EXISTS permissions_roles;
 CREATE TABLE permissions_roles (
 	permission_id BIGINT UNSIGNED NOT NULL,
@@ -132,7 +113,6 @@ CREATE TABLE permissions_roles (
 	PRIMARY KEY (permission_id, role_id)
 );
 
--- Пользователи и их курсы
 DROP TABLE IF EXISTS users_courses;
 CREATE TABLE users_courses (
 	user_id BIGINT UNSIGNED NOT NULL,
@@ -143,7 +123,6 @@ CREATE TABLE users_courses (
 	PRIMARY KEY (user_id, course_id)
 );
 
--- Пользователи и пройденные/непройденные ими шаги
 DROP TABLE IF EXISTS users_steps;
 CREATE TABLE users_steps (
 	user_id BIGINT UNSIGNED NOT NULL,
@@ -156,7 +135,6 @@ CREATE TABLE users_steps (
 	PRIMARY KEY (user_id, step_id)
 );
 
--- Профили пользователей
 DROP TABLE IF EXISTS profiles;
 CREATE TABLE profiles (
   id SERIAL,
